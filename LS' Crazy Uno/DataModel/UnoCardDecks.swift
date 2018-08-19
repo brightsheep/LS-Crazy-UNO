@@ -142,12 +142,15 @@ class UnoCardDecks {
         }
         else {
             self.cardDeck.remove(at: cardindex)
+            numberOfCards -= 1
         }
     }
     
 
     //MARK: - add one card to the deck
     func addOneCard (addedCard : UnoCards) {
+        self.cardDeck.insert(addedCard, at: 0)
+        numberOfCards += 1
         print("add one card")
     }
     

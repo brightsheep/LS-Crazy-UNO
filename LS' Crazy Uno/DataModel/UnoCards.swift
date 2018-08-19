@@ -25,6 +25,7 @@ class UnoCards {
     init(){
     }
     
+    // Initialize color cards with numbers
     init(cardColor: String, number: Int) {
         
         if penalty == 0 {
@@ -36,6 +37,7 @@ class UnoCards {
         
     }
     
+    // Initialize all other special cards 
     init(cardColor: String, penalty: Int, action: String) {
         
         if action == "Draw" {

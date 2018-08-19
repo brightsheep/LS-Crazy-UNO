@@ -58,8 +58,8 @@ class UnoCardDecks {
                 }
             }
         }
+        
         // wild cards  4 +0, 4 +4,  1 +5, 1 -1,  swapHands
-            
         let wildCards = ["wildDraw4", "wildDraw0", "wildDraw5", "wildDraw-1"]
         for wildCard in wildCards {
                 
@@ -77,8 +77,6 @@ class UnoCardDecks {
                     self.cardDeck.append(card)
                     numberOfCards += 1
                 }
-                
-           //     print("index=", index)
             }
 
             if wildCard == "wildDraw5" {
@@ -93,19 +91,17 @@ class UnoCardDecks {
                 self.cardDeck.append(card)
             }
     
-            print(penalty)
-            
         }
         
-        // add one more swap hand car
+        // add one more swap hand card
         card = UnoCards(cardColor: "wild", penalty: 0, action: "SwapHands")
         self.cardDeck.append(card)
         numberOfCards += 1
 
     }
     
-    // MARK: Shuffle deck
-    
+    // MARK: Shuffle deck of cards
+    // The algorithm is to generate a random number and swap the card with the last one, then the second to last, then the third to last, etc.
     
     func shuffleDeck() {
         
@@ -115,7 +111,7 @@ class UnoCardDecks {
         {
             let rand = Int(arc4random_uniform(UInt32(last)))
             
-            print("swap \(last) = \(cardDeck[last].imageName) with \(rand) = \(cardDeck[rand].imageName)")
+            //print("swap \(last) = \(cardDeck[last].imageName) with \(rand) = \(cardDeck[rand].imageName)")
             
             cardDeck.swapAt(last, rand)
    
@@ -123,17 +119,7 @@ class UnoCardDecks {
         }
 
     }
-//        card = UnoCards(cardColor: "yellow", number: 1)
-//        self.cardDeck.append(card)
-//        card = UnoCards(cardColor: "wild", penalty: 0, action: "SwapHands")
-//        self.cardDeck.append(card)
-        
-//        print(cardDeck[0].imageName)
-//        print(cardDeck[1].imageName)
-//          print(numberOfCards)
 
-
-    //
     
     //MARK: - Remove one card from the deck at cardindex
     func removeOneCard (cardindex : Int) {
@@ -149,6 +135,7 @@ class UnoCardDecks {
     //MARK: - add one card to the deck
     func addOneCard (addedCard : UnoCards) {
         print("add one card")
+        
     }
     
 }
@@ -156,3 +143,15 @@ class UnoCardDecks {
     
     
 
+//  Old code for printing out stuff
+//        card = UnoCards(cardColor: "yellow", number: 1)
+//        self.cardDeck.append(card)
+//        card = UnoCards(cardColor: "wild", penalty: 0, action: "SwapHands")
+//        self.cardDeck.append(card)
+
+//        print(cardDeck[0].imageName)
+//        print(cardDeck[1].imageName)
+//          print(numberOfCards)
+
+
+//

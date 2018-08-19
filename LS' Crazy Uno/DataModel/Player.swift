@@ -13,11 +13,19 @@ class Player {
     var playerName : String = ""
     var numberOfCards : Int = 0
     
+    
+    // initialization
     init() {
         
     }
     
-    func DrawCard(numCards : Int) {
+    init(name: String) {
+        playerName = name
+    }
+    
+    // Draw a number of cards from a specific card Deck
+    
+    func DrawCard(cardDeck: UnoCardDecks, numCards : Int) {
         
     }
     

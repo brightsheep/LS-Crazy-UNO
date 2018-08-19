@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     var mainCardDeck = UnoCardDecks(fullDeck: true)   // Main card deck where the cards are drawn from
     var discardCardDeck = UnoCardDecks(fullDeck: false) // Discard card deck
     
-    var Player1 = Player()   // Self
-    var Player2 = Player()   // Opponent
+    var Player1 = Player(name: "Sydney")   // Self
+    var Player2 = Player(name: "Computer")   // Opponent
     
     // IBoutlet connections
 
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         
         mainCardDeck.shuffleDeck()   // shuffle cards
         
-        print("main deck has ", mainCardDeck.numberOfCards)
+        print ("number of card in the main deck, \(mainCardDeck.numberOfCards)")
         print("discard deck has", discardCardDeck.numberOfCards)
         
         dealCards ()   // Deal card
@@ -63,13 +63,21 @@ class ViewController: UIViewController {
     // MARK: Deal card to players
     
     func dealCards() {
+        
+        // testing if everything is working
         print (Player1.playerName)
         var card = UnoCards()
         card = mainCardDeck.cardDeck[1]
-        print (card.color)
+  
+        print (card.name)
         mainCardDeck.removeOneCard(cardindex: 1)
+        print ("number of card in the main deck, \(mainCardDeck.numberOfCards)")
+        discardCardDeck.addOneCard(addedCard: card)
+        print("discard deck has", discardCardDeck.numberOfCards)
         
-        print (card.color)
+        print (mainCardDeck.cardDeck[1].name)
+        
+        print (discardCardDeck.cardDeck[0].name)
         
     }
     

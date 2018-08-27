@@ -122,14 +122,17 @@ class UnoCardDecks {
 
     
     //MARK: - Remove one card from the deck at cardindex
-    func removeOneCard (cardindex : Int) {
+    func removeOneCard (cardindex : Int) -> UnoCards{
+        var B : UnoCards = UnoCards()
         if cardindex >= numberOfCards {
             print ("Cannot remove the card, ERROR INDEX")
         }
         else {
+            B = self.cardDeck[cardindex]
             self.cardDeck.remove(at: cardindex)
             numberOfCards -= 1
         }
+        return B
     }
     
 

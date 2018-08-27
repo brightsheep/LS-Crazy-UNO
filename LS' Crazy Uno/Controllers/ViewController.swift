@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         
         dealCards ()   // Deal card
         
-        print("Go flat")
+
     }
     
     // MARK: Deal card to players

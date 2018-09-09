@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         print("discard deck has", discardCardDeck.numberOfCards)
         
         dealCards ()   // Deal card
-        
+        displayCards()
 
     }
     
@@ -66,21 +66,22 @@ class ViewController: UIViewController {
         
         // testing if everything is working
         print (Player1.playerName)
-        var card = UnoCards()
-        card = mainCardDeck.cardDeck[1]
-  
-        print (card.name)
-        mainCardDeck.removeOneCard(cardindex: 1)
-        print ("number of card in the main deck, \(mainCardDeck.numberOfCards)")
-        discardCardDeck.addOneCard(addedCard: card)
-        print("discard deck has", discardCardDeck.numberOfCards)
-        
-        print (mainCardDeck.cardDeck[1].name)
-        
-        print (discardCardDeck.cardDeck[0].name)
-        
+        Player1.DrawCard(cardDeck: mainCardDeck, numCards: 7)
+        Player2.DrawCard(cardDeck: mainCardDeck, numCards: 7)
+        print(mainCardDeck.numberOfCards)
+        print(Player1.numberOfCards)
+        print(Player2.numberOfCards)
+        print(Player1.cardInHands.cardDeck[1].imageName)
     }
     
+    func displayCards(){
+        for index in 1...Player1.numberOfCards {
+            playerCard.image = UIImage(named: Player1.cardInHands.cardDeck[index].imageName)
+        }
+
+        
+        
+    }
 }
 
 

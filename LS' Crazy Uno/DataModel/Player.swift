@@ -26,7 +26,7 @@ class Player {
     // Draw a number of cards from a specific card Deck
     // func DrawCard
     func DrawCard(cardDeck: UnoCardDecks, numCards : Int) {
-        for index in 0...numCards{
+        for index in 1...numCards{
             numberOfCards += 1
             var tempCard : UnoCards = UnoCards()
             tempCard = cardDeck.removeOneCard(cardindex: 0)

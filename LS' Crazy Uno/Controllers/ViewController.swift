@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     var Player1 = Player(name: "Sydney")   // Self
     var Player2 = Player(name: "Computer")   // Opponent
-    
+
     // IBoutlet connections
 
     // card Image for the face up cards
@@ -35,7 +35,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playerCard = playerCard.sorted(by: {$0.tag < $1.tag})
 
+        displayCards()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -45,11 +47,19 @@ class ViewController: UIViewController {
     
     // MARK: New Game starts
     
+    func initializeGame() {
+        mainCardDeck = UnoCardDecks(fullDeck: true)
+        discardCardDeck = UnoCardDecks(fullDeck: false)
+        Player1 = Player(name: "Sydney")
+        Player2 = Player(name: "Computer")
+
+    }
+    
     @IBAction func newGameButtonPressed(_ sender: Any) {
         newGameButton.setTitle("Restart", for: [])
         
 //        var card = UnoCards()
-        
+        initializeGame()
         mainCardDeck.shuffleDeck()   // shuffle cards
         
         print ("number of card in the main deck, \(mainCardDeck.numberOfCards)")
@@ -63,7 +73,7 @@ class ViewController: UIViewController {
     // MARK: Deal card to players
     
     func dealCards() {
-        
+        var tempUnoCard = UnoCards()
         // testing if everything is working
         print (Player1.playerName)
         Player1.DrawCard(cardDeck: mainCardDeck, numCards: 7)
@@ -72,15 +82,25 @@ class ViewController: UIViewController {
         print(Player1.numberOfCards)
         print(Player2.numberOfCards)
         print(Player1.cardInHands.cardDeck[1].imageName)
+        
+        tempUnoCard = mainCardDeck.removeOneCard(cardindex: 0)
+        discardCardDeck.addOneCard(addedCard: tempUnoCard)
     }
     
     func displayCards(){
-        for index in 1...Player1.numberOfCards {
-            playerCard.image = UIImage(named: Player1.cardInHands.cardDeck[index].imageName)
+        if Player1.numberOfCards>0 {
+            for index in 0...Player1.numberOfCards-1 {
+                playerCard[index].image = UIImage(named: Player1.cardInHands.cardDeck[index].imageName)
+            }
         }
 
-        
-        
+        for index in Player1.numberOfCards...23{
+            playerCard[index].image = nil
+        }
+        Player2CardNumber.text = String(Player2.numberOfCards)
+        if discardCardDeck.numberOfCards>0{
+            cardImage.image = UIImage(named: discardCardDeck.cardDeck[0].imageName)
+        }
     }
 }
 
